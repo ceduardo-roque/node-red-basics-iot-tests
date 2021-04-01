@@ -1,0 +1,711 @@
+[
+    {
+        "id": "9fb2abc4.25d518",
+        "type": "tab",
+        "label": "Datacenter Simulador",
+        "disabled": false,
+        "info": "Simulador IoT\n\nEste é o módulo para simular o sistema de temperatura de um datacenter"
+    },
+    {
+        "id": "426a44ae.467c9c",
+        "type": "tab",
+        "label": "Datacenter Dashboard",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "722a688a.ee7698",
+        "type": "tab",
+        "label": "Datacenter Webservices",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "aaa9c4fe.aaff58",
+        "type": "mqtt-broker",
+        "name": "Teste Mosquitto Broker",
+        "broker": "test.mosquitto.org",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "e5a2388.2b433c8",
+        "type": "ui_tab",
+        "name": "36SCJ",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "ca8f15fb.27d5e8",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-dark",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#097479",
+                    "value": "#097479",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#097479",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#0eb8c0",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#555555",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#eeeeee",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#097479",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "true",
+            "lockMenu": "true",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "62a8912e.298f2",
+        "type": "ui_group",
+        "name": "36SCJ",
+        "tab": "e5a2388.2b433c8",
+        "order": 1,
+        "disp": true,
+        "width": "9",
+        "collapse": false
+    },
+    {
+        "id": "b26fe190.50e4e",
+        "type": "firebase admin",
+        "name": "36SCJ-IoT"
+    },
+    {
+        "id": "589bb0d.1bf305",
+        "type": "inject",
+        "z": "9fb2abc4.25d518",
+        "name": "Simulação de Temperatura Baixa",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "10",
+        "payloadType": "num",
+        "x": 170,
+        "y": 60,
+        "wires": [
+            [
+                "69c72190.9f8db"
+            ]
+        ]
+    },
+    {
+        "id": "7b05ab1d.c567a4",
+        "type": "function",
+        "z": "9fb2abc4.25d518",
+        "name": "Temperatura abaixo do esperado",
+        "func": "msg.payload = \"Temperatura abaixo do esperado\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1180,
+        "y": 60,
+        "wires": [
+            [
+                "c199158d.4228c8"
+            ]
+        ]
+    },
+    {
+        "id": "c31a9833.9b2498",
+        "type": "function",
+        "z": "9fb2abc4.25d518",
+        "name": "Temperatura acima do esperado",
+        "func": "msg.payload = \"Temperatura acima do esperado\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1190,
+        "y": 160,
+        "wires": [
+            [
+                "c199158d.4228c8"
+            ]
+        ]
+    },
+    {
+        "id": "47a9179.c7823e8",
+        "type": "function",
+        "z": "9fb2abc4.25d518",
+        "name": "Temperatura dentro da normalidade",
+        "func": "msg.payload = \"Temperatura dentro da normalidade\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1180,
+        "y": 260,
+        "wires": [
+            [
+                "c199158d.4228c8"
+            ]
+        ]
+    },
+    {
+        "id": "c199158d.4228c8",
+        "type": "debug",
+        "z": "9fb2abc4.25d518",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1490,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "764710de.a01bb",
+        "type": "inject",
+        "z": "9fb2abc4.25d518",
+        "name": "Simulação de Temperatura Normal",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "22",
+        "payloadType": "num",
+        "x": 180,
+        "y": 160,
+        "wires": [
+            [
+                "69c72190.9f8db"
+            ]
+        ]
+    },
+    {
+        "id": "2f457416.fa943c",
+        "type": "inject",
+        "z": "9fb2abc4.25d518",
+        "name": "Simulação da Temperatura Alta",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "37",
+        "payloadType": "num",
+        "x": 170,
+        "y": 260,
+        "wires": [
+            [
+                "69c72190.9f8db"
+            ]
+        ]
+    },
+    {
+        "id": "69c72190.9f8db",
+        "type": "function",
+        "z": "9fb2abc4.25d518",
+        "name": "",
+        "func": "dados = {\n    \"deviceUUID\": \"36SCJ-CARLOS-ROQUE\",\n    \"value\" : msg.payload\n    \n}\n\nmsg.payload = dados;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 520,
+        "y": 160,
+        "wires": [
+            [
+                "5415a6ba.9a32d8",
+                "34c7269.a74bdda"
+            ]
+        ]
+    },
+    {
+        "id": "5415a6ba.9a32d8",
+        "type": "switch",
+        "z": "9fb2abc4.25d518",
+        "name": "Controle de Temperatura do Data Center",
+        "property": "payload.value",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lt",
+                "v": "20",
+                "vt": "str"
+            },
+            {
+                "t": "gt",
+                "v": "25",
+                "vt": "str"
+            },
+            {
+                "t": "btwn",
+                "v": "20",
+                "vt": "num",
+                "v2": "25",
+                "v2t": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 800,
+        "y": 160,
+        "wires": [
+            [
+                "7b05ab1d.c567a4"
+            ],
+            [
+                "c31a9833.9b2498"
+            ],
+            [
+                "47a9179.c7823e8"
+            ]
+        ]
+    },
+    {
+        "id": "ffa5632d.a0069",
+        "type": "debug",
+        "z": "9fb2abc4.25d518",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "34c7269.a74bdda",
+        "type": "mqtt out",
+        "z": "9fb2abc4.25d518",
+        "name": "Minha temperatura",
+        "topic": "scjtemp",
+        "qos": "2",
+        "retain": "true",
+        "broker": "aaa9c4fe.aaff58",
+        "x": 750,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "c642739d.58599",
+        "type": "mqtt in",
+        "z": "9fb2abc4.25d518",
+        "name": "Temperaturas",
+        "topic": "scjtemp/36SCJ-CARLOS-ROQUE",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "aaa9c4fe.aaff58",
+        "x": 530,
+        "y": 400,
+        "wires": [
+            [
+                "ffa5632d.a0069"
+            ]
+        ]
+    },
+    {
+        "id": "401454c2.8390bc",
+        "type": "ui_gauge",
+        "z": "426a44ae.467c9c",
+        "name": "TEMPERATURA",
+        "group": "62a8912e.298f2",
+        "order": 0,
+        "width": "9",
+        "height": "9",
+        "gtype": "gage",
+        "title": "gauge",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 790,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "35d73a0e.065c26",
+        "type": "mqtt in",
+        "z": "426a44ae.467c9c",
+        "name": "",
+        "topic": "scjtemp/36SCJ-CARLOS-ROQUE",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "aaa9c4fe.aaff58",
+        "x": 160,
+        "y": 120,
+        "wires": [
+            [
+                "6c860e7b.bdddc"
+            ]
+        ]
+    },
+    {
+        "id": "6c860e7b.bdddc",
+        "type": "json",
+        "z": "426a44ae.467c9c",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 390,
+        "y": 120,
+        "wires": [
+            [
+                "ecab359.3b7a7c8"
+            ]
+        ]
+    },
+    {
+        "id": "ecab359.3b7a7c8",
+        "type": "function",
+        "z": "426a44ae.467c9c",
+        "name": "",
+        "func": "msg.payload = msg.payload.value;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 540,
+        "y": 120,
+        "wires": [
+            [
+                "401454c2.8390bc"
+            ]
+        ]
+    },
+    {
+        "id": "9cc456a.59de9a8",
+        "type": "mqtt in",
+        "z": "722a688a.ee7698",
+        "name": "MINHA TEMP",
+        "topic": "scjtemp",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "aaa9c4fe.aaff58",
+        "x": 230,
+        "y": 120,
+        "wires": [
+            [
+                "cc71d09d.937ed"
+            ]
+        ]
+    },
+    {
+        "id": "f014c02d.8acc9",
+        "type": "function",
+        "z": "722a688a.ee7698",
+        "name": "",
+        "func": "msg[\"doc\"] = msg.payload.deviceUUID;\n\ncontext.global.temperatura = msg.payload;\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 580,
+        "y": 120,
+        "wires": [
+            [
+                "d2e95c6b.15e2",
+                "913b9325.1de81"
+            ]
+        ]
+    },
+    {
+        "id": "cc71d09d.937ed",
+        "type": "json",
+        "z": "722a688a.ee7698",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 410,
+        "y": 120,
+        "wires": [
+            [
+                "f014c02d.8acc9",
+                "938af408.ad6d18"
+            ]
+        ]
+    },
+    {
+        "id": "11b1b8cd.032077",
+        "type": "http response",
+        "z": "722a688a.ee7698",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1090,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "42d3c241.22210c",
+        "type": "function",
+        "z": "722a688a.ee7698",
+        "name": "Recuperar parametro",
+        "func": "msg[\"doc\"] = msg.req.params.deviceUUID;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 480,
+        "y": 240,
+        "wires": [
+            [
+                "a8b680c8.a3cda"
+            ]
+        ]
+    },
+    {
+        "id": "d2e95c6b.15e2",
+        "type": "Firestore out",
+        "z": "722a688a.ee7698",
+        "name": "persistencia de dados",
+        "collection": "temperatura",
+        "document": "{{doc}}",
+        "operation": "set",
+        "admin": "b26fe190.50e4e",
+        "eject": false,
+        "x": 800,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "913b9325.1de81",
+        "type": "debug",
+        "z": "722a688a.ee7698",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "9dddbbb7.9af738",
+        "type": "http in",
+        "z": "722a688a.ee7698",
+        "name": "",
+        "url": "/temperatura/:deviceUUID",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 170,
+        "y": 240,
+        "wires": [
+            [
+                "42d3c241.22210c"
+            ]
+        ]
+    },
+    {
+        "id": "a8b680c8.a3cda",
+        "type": "Firestore in",
+        "z": "722a688a.ee7698",
+        "name": "Pesquisa no banco",
+        "collection": "temperatura",
+        "group": false,
+        "document": "{{doc}}",
+        "realtime": false,
+        "query": [],
+        "admin": "b26fe190.50e4e",
+        "snapHandler": "",
+        "eject": false,
+        "x": 730,
+        "y": 240,
+        "wires": [
+            [
+                "653c6c1c.62ce34"
+            ]
+        ]
+    },
+    {
+        "id": "653c6c1c.62ce34",
+        "type": "function",
+        "z": "722a688a.ee7698",
+        "name": "",
+        "func": "dados = {\n    \"celsius\" : msg.payload.value,\n    \"kelvin\" : msg.payload.value + 273\n}\n\nmsg.payload = dados;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 950,
+        "y": 280,
+        "wires": [
+            [
+                "11b1b8cd.032077"
+            ]
+        ]
+    },
+    {
+        "id": "938af408.ad6d18",
+        "type": "function",
+        "z": "722a688a.ee7698",
+        "name": "",
+        "func": "msg.payload[\"timestamp\"] = Number(new Date());\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 580,
+        "y": 180,
+        "wires": [
+            [
+                "845345e0.249788"
+            ]
+        ]
+    },
+    {
+        "id": "845345e0.249788",
+        "type": "Firestore out",
+        "z": "722a688a.ee7698",
+        "name": "device_data",
+        "collection": "device_data",
+        "document": "",
+        "operation": "add",
+        "admin": "b26fe190.50e4e",
+        "eject": false,
+        "x": 770,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    }
+]
